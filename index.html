@@ -829,6 +829,9 @@
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(45deg, #ff0000, #800000);
         }
+
+        /* Profile Glow */
+        .profile-glow {
     </style>
     <!-- Add these additional libraries in the head section -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -894,20 +897,43 @@
     </div>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-24 pb-12 px-4 animated-bg relative min-h-screen flex items-center">
-        <div id="particles-js" class="absolute inset-0"></div>
-        <div class="max-w-6xl mx-auto flex flex-col items-center relative z-10">
-            <div class="text-center">
-                <h1 class="mb-4">
-                    <div class="neon-text">Hi, I'm</div>
-                    <div class="name-text">CARL JAMES</div>
-                    <div class="name-text">SESBRENIO</div>
-                </h1>
-                <div class="subtitle">BSIT Student & JOSE RIZAL UNIVERSITY</div>
-                <button class="get-in-touch">GET IN TOUCH</button>
+<section id="home" class="pt-24 pb-12 px-4 animated-bg relative min-h-screen flex items-center">
+    <div id="particles-js" class="absolute inset-0"></div>
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 relative z-10">
+        <!-- Profile Picture Container -->
+        <div class="relative">
+            <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-red-600 relative z-10">
+                <img 
+                    src="images/profile.jpg" 
+                    alt="Profile Picture" 
+                    class="w-full h-full object-cover"
+                >
+                <div class="absolute inset-0 ring-2 ring-red-500 ring-offset-2 rounded-full"></div>
+            </div>
+            <!-- Glowing effect -->
+            <div class="absolute -inset-2 bg-red-600/20 rounded-full blur-lg z-0"></div>
+        </div>
+
+        <!-- Text Content -->
+        <div class="text-center md:text-left">
+            <h1 class="mb-4">
+                <div class="neon-text text-2xl mb-2">HI, I'M</div>
+                <div class="name-text text-5xl font-bold" style="text-shadow: 2px 2px 4px rgba(255,0,0,0.5)">CARL JAMES</div>
+                <div class="name-text text-5xl font-bold" style="text-shadow: 2px 2px 4px rgba(255,0,0,0.5)">SESBRENIO</div>
+            </h1>
+            <div class="subtitle text-xl mb-8">BSIT Student From JOSE RIZAL UNIVERSITY</div>
+            <!-- Buttons Container -->
+            <div class="flex gap-4 justify-center md:justify-start">
+                <a href="#contact" class="get-in-touch inline-block px-8 py-3 bg-red-900/20 border-2 border-red-600 hover:bg-red-600/20 transition-all duration-300">
+                    GET IN TOUCH
+                </a>
+                <a href="#projects" class="get-in-touch inline-block px-8 py-3 bg-red-900/20 border-2 border-red-600 hover:bg-red-600/20 transition-all duration-300">
+                    VIEW ACTIVITIES
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- About Section -->
     <section id="about" class="py-12 bg-[#1a0000] px-4">
@@ -1095,7 +1121,7 @@ I also value working in teams, where I can learn from others and share my ideas.
             <div class="mb-12 bg-black/30 p-6 rounded-xl backdrop-blur-sm border border-red-900/30">
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-xl font-bold text-red-400">Term Progress</h3>
-                    <span class="text-white text-lg">80% Complete</span>
+                    <span class="text-white text-lg">100% Complete</span>
                 </div>
                 <div class="h-4 bg-black/50 rounded-full overflow-hidden">
                     <div class="progress-bar-fill h-full rounded-full w-4/5"></div>
@@ -3060,6 +3086,16 @@ I also value working in teams, where I can learn from others and share my ideas.
                 setTimeout(() => {
                     loader.classList.add('loader-hidden');
                     // Remove loader from DOM after transition
+                    loader.addEventListener('transitionend', () => {
+                        document.body.removeChild(loader);
+                    });
+                }, 500); // Adjust delay as needed
+            });
+        });
+    </script>
+</body>
+</html>
+
                     loader.addEventListener('transitionend', () => {
                         document.body.removeChild(loader);
                     });
